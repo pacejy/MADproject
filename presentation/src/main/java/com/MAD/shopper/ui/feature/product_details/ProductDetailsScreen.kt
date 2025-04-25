@@ -150,16 +150,19 @@ fun ProductDetailsScreen(
                 color = Color.Gray
             )
             Spacer(modifier = Modifier.size(16.dp))
+            /*
             Text(
                 text = "Size",
                 style = MaterialTheme.typography.titleMedium,
                 modifier = Modifier.padding(start = 16.dp)
             )
+
+             */
             Spacer(modifier = Modifier.size(8.dp))
             Row(modifier = Modifier.padding(horizontal = 16.dp)) {
-                repeat(4) {
+                /*repeat(4) {
                     SizeItem(size = "${it + 1}", isSelected = it == 0) {}
-                }
+                } */
             }
             Spacer(modifier = Modifier.size(16.dp))
             Row(modifier = Modifier
