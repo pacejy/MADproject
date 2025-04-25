@@ -176,11 +176,15 @@ fun HomeContent(
     onClick: (Product) -> Unit,
     onProducts: () -> Unit
 ) {
+    var productSearch = remember {
+        mutableStateOf("")
+    }
+
     LazyColumn {
         item {
             ProfileHeader(onProducts)
             Spacer(modifier = Modifier.size(16.dp))
-            SearchBar(value = "", onTextChanged = {})
+            SearchBar(value = productSearch.value, onTextChanged = {productSearch.value = it})
             Spacer(modifier = Modifier.size(16.dp))
         }
         item {
