@@ -48,6 +48,7 @@ import com.MAD.shopper.R
 import com.MAD.shopper.navigation.CartSummaryScreen
 import kotlinx.coroutines.delay
 import org.koin.androidx.compose.koinViewModel
+import java.text.DecimalFormat
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -63,6 +64,7 @@ fun CartScreen(navController: NavController, viewModel: CartViewModel = koinView
     val errorMsg = remember {
         mutableStateOf<String?>(null)
     }
+
     LaunchedEffect(uiState.value) {
         when (uiState.value) {
             is CartEvent.Loading -> {
@@ -87,6 +89,7 @@ fun CartScreen(navController: NavController, viewModel: CartViewModel = koinView
             }
         }
     }
+
     Column(modifier = Modifier.fillMaxSize()) {
         val pullToRefreshState = rememberPullToRefreshState()
         if (pullToRefreshState.isRefreshing) {
@@ -211,8 +214,9 @@ fun CartItem(
                 overflow = TextOverflow.Ellipsis
             )
             Spacer(modifier = Modifier.size(4.dp))
+            val dec = DecimalFormat("#.00")
             Text(
-                text = "$${item.price}",
+                text = "$${dec.format(item.price)}",
                 style = MaterialTheme.typography.bodySmall.copy(fontWeight = FontWeight.SemiBold),
                 color = MaterialTheme.colorScheme.primary,
             )
@@ -255,7 +259,6 @@ fun CartItem(
                         contentDescription = null
                     )
                 }
-
             }
         }
     }

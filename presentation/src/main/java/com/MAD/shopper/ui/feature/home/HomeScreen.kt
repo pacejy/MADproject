@@ -50,6 +50,7 @@ import com.MAD.shopper.model.UiProductModel
 import com.MAD.shopper.navigation.AllProductsScreen
 import com.MAD.shopper.navigation.ProductDetails
 import org.koin.androidx.compose.koinViewModel
+import java.text.DecimalFormat
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
@@ -204,8 +205,6 @@ fun HomeContent(
             if (categories.isNotEmpty()) {
                 LazyRow {
                     items(categories, key = { it }) { category ->
-                        /** removed animated visibility, blocking render of
-                        categories which are not in viewport of screen**/
                         Text(
                             text = category.replaceFirstChar { it.uppercase() },
                             style = MaterialTheme.typography.bodyMedium,
@@ -287,9 +286,6 @@ fun HomeProductRow(products: List<Product>, title: String, onClick: (Product) ->
         Spacer(modifier = Modifier.size(8.dp))
         LazyRow {
             items(products, key = { it.id }) { product ->
-                /** removed animated visibility, blocking render of
-                products which are not in viewport of screen**/
-
                 ProductItem(product = product, onClick)
 
             }
@@ -326,8 +322,9 @@ fun ProductItem(product: Product, onClick:(Product)->Unit) {
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
             )
+            val dec = DecimalFormat("#.00")
             Text(
-                text = "$${product.price}",
+                text = "$${dec.format(product.price)}",
                 style = MaterialTheme.typography.bodySmall,
                 modifier = Modifier.padding(horizontal = 8.dp),
                 color = MaterialTheme.colorScheme.primary,

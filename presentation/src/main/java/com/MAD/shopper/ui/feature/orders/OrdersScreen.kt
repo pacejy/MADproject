@@ -26,6 +26,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.MAD.domain.model.OrdersData
 import org.koin.androidx.compose.koinViewModel
+import java.text.DecimalFormat
 
 @Composable
 fun OrdersScreen(viewModel: OrdersViewModel = koinViewModel()) {
@@ -144,7 +145,8 @@ fun OrderItem(order: OrdersData) {
     ) {
         Text(text = "Order Id: ${order.id}")
         Text(text = "Order Date: ${order.orderDate}")
-        Text(text = "Total Amount: ${order.totalAmount}")
+        val dec = DecimalFormat("#.00")
+        Text(text = "Total Amount: ${dec.format(order.totalAmount)}")
         Text(text = "Status: ${order.status}")
     }
 }

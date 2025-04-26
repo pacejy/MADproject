@@ -43,6 +43,7 @@ import com.MAD.shopper.R
 import com.MAD.shopper.model.UiProductModel
 import com.MAD.shopper.navigation.ProductDetails
 import org.koin.androidx.compose.koinViewModel
+import java.text.DecimalFormat
 
 @Composable
 fun AllProductsScreen(
@@ -236,8 +237,10 @@ fun ProductItem(product: Product, onClick:()->Unit, onAddToCart: () -> Unit, isE
                     .fillMaxWidth()
                     .padding(end = 4.dp, bottom = 4.dp)
             ) {
+                val dec = DecimalFormat("#.00")
+
                 Text(
-                    text = "$${product.price}",
+                    text = "$${dec.format(product.price)}",
                     style = MaterialTheme.typography.bodySmall,
                     modifier = Modifier
                         .padding(horizontal = 8.dp)

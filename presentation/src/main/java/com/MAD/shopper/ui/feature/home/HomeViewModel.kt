@@ -26,13 +26,7 @@ class HomeViewModel(
     private fun getAllProducts() {
         viewModelScope.launch {
             _uiState.value = HomeScreenUIEvents.Loading
-            /**
-             *  -- To Launch all request's at the same time to get data from server --
-             * async{} will launch all the request's in parallel at the same time
-             * and await() will be wait for the every request result response
-             * using this approach our network calling will be fast and it will take less time to
-             * show the data on screen to user
-             */
+
             val featured = async {
                 getProducts(1)
             }

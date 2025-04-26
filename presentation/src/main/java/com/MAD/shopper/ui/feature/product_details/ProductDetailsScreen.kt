@@ -42,6 +42,7 @@ import coil.compose.AsyncImage
 import com.MAD.shopper.R
 import com.MAD.shopper.model.UiProductModel
 import org.koin.androidx.compose.koinViewModel
+import java.text.DecimalFormat
 
 @Composable
 fun ProductDetailsScreen(
@@ -108,8 +109,9 @@ fun ProductDetailsScreen(
                         .padding(16.dp)
                         .weight(1f)
                 )
+                val dec = DecimalFormat("#.00")
                 Text(
-                    text = "$${product.price}",
+                    text = "$${dec.format(product.price)}",
                     style = MaterialTheme.typography.titleMedium,
                     modifier = Modifier.padding(16.dp),
                     color = MaterialTheme.colorScheme.primary

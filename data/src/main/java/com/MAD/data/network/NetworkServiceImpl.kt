@@ -36,7 +36,7 @@ import io.ktor.http.contentType
 import io.ktor.utils.io.errors.IOException
 
 class NetworkServiceImpl(val client: HttpClient) : NetworkService {
-    private val baseUrl = "https://ecommerce-ktor-4641e7ff1b63.herokuapp.com/v2"
+    private val baseUrl = "https://MADrestapi.onrender.com/v1"
     override suspend fun getProducts(category: Int?): ResultWrapper<ProductListModel> {
         val url =
             if (category != null) "$baseUrl/products/category/$category" else "$baseUrl/products"
