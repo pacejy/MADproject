@@ -195,7 +195,7 @@ fun BottomNavigationBar(navController: NavController) {
         val items = listOf(
             BottomNavItems.Home,
             BottomNavItems.Orders,
-            BottomNavItems.Profile
+            //BottomNavItems.Profile
         )
 
         items.forEach { item ->
