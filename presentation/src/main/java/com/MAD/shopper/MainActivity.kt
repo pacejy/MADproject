@@ -234,5 +234,5 @@ fun BottomNavigationBar(navController: NavController) {
 sealed class BottomNavItems(val route: Any, val title: String, val icon: Int) {
     object Home : BottomNavItems(HomeScreen, "Home", icon = R.drawable.ic_home)
     object Orders : BottomNavItems(OrdersScreen, "Orders", icon = R.drawable.ic_orders)
-    object Profile : BottomNavItems(ProfileScreen, "Profile", icon = R.drawable.ic_profile_bn)
+    //object Profile : BottomNavItems(ProfileScreen, "Profile", icon = R.drawable.ic_profile_bn)
 }

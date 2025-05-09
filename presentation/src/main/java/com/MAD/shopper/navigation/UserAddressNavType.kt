@@ -2,19 +2,17 @@ package com.MAD.shopper.navigation
 
 import android.os.Build
 import android.os.Bundle
+import androidx.annotation.RequiresApi
 import androidx.navigation.NavType
-import com.MAD.shopper.model.UiProductModel
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
-import java.net.URLDecoder
-import java.net.URLEncoder
-import java.util.Base64
+
+
 
 val userAddressNavType = object : NavType<UserAddressRouteWrapper>(isNullableAllowed = false) {
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     override fun get(bundle: Bundle, key: String): UserAddressRouteWrapper? {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU)
-            return bundle.getParcelable(key, UserAddressRouteWrapper::class.java)
-        return bundle.getParcelable(key) as? UserAddressRouteWrapper
+        return bundle.getParcelable(key, UserAddressRouteWrapper::class.java)
     }
 
     override fun parseValue(value: String): UserAddressRouteWrapper {

@@ -3,7 +3,6 @@ package com.MAD.shopper.ui.feature.product_details
 import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -16,7 +15,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
@@ -86,18 +84,6 @@ fun ProductDetailsScreen(
                     .background(Color.LightGray.copy(alpha = 0.4f))
                     .padding(8.dp)
                     .align(Alignment.TopStart)
-            )
-
-            Image(
-                painter = painterResource(id = R.drawable.ic_favorite),
-                contentDescription = null,
-                modifier = Modifier
-                    .padding(16.dp)
-                    .size(48.dp)
-                    .clip(CircleShape)
-                    .background(Color.LightGray.copy(alpha = 0.4f))
-                    .padding(8.dp)
-                    .align(Alignment.TopEnd)
             )
         }
         Column(modifier = Modifier.fillMaxSize()) {
@@ -251,32 +237,5 @@ fun ProductDetailsScreen(
                 )
             }
         }
-    }
-}
-
-@Composable
-fun SizeItem(size: String, isSelected: Boolean, onClick: () -> Unit) {
-    Box(
-        modifier = Modifier
-            .padding(horizontal = 4.dp)
-            .size(48.dp)
-            .clickable { onClick() }
-            .clip(RoundedCornerShape(8.dp))
-            .border(
-                width = 1.dp,
-                color = Color.Gray,
-                shape = RoundedCornerShape(8.dp)
-            )
-            .background(
-                if (isSelected) MaterialTheme.colorScheme.primary else Color.Transparent
-            )
-            .padding(8.dp)
-    ) {
-        Text(
-            text = size,
-            style = MaterialTheme.typography.bodySmall,
-            modifier = Modifier.align(Alignment.Center),
-            color = if (isSelected) MaterialTheme.colorScheme.onPrimary else MaterialTheme.colorScheme.onSurface
-        )
     }
 }
